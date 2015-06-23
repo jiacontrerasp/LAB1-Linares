@@ -1,0 +1,57 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="co.edu.unal.mycontacts.MyContacts">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/welcome_message"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/welcome_label"/>
+
+    </LinearLayout>
+
+    <!-- Button bar -->
+    <LinearLayout
+        android:layout_height="48dp"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent">
+
+        <Button
+            android:id="@+id/add_contact"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@color/green"
+            android:text="@string/add_contact_button"
+            android:textColor="#fff"
+            android:textSize="@dimen/botton_text_size_medium"
+            android:textAllCaps="true"/>
+
+        <Button
+            android:id="@+id/select_contact"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@color/accent"
+            android:text="@string/select_contact_button"
+            android:textColor="#fff"
+            android:textSize="@dimen/botton_text_size_medium"
+            android:textAllCaps="true"/>
+    </LinearLayout>
+
+
+</LinearLayout>

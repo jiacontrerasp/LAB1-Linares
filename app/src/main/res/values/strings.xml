@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">My contacts</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_show_contact">ShowContactActivity</string>
+    <string name="title_activity_my_contacts">MyContacts</string>
+    <string name="title_activity_add_contact">AddContactActivity</string>
+
+
+    <string name="welcome_label">Welcome to My Contacts!</string>
+
+    <string name="add_contact_button">ADD</string>
+    <string name="select_contact_button">SELECT</string>
+
+    <!--<string name="add_contact_button">Add Contact!</string>
+    <string name="select_contact_button">Select Contact!</string>
+    -->
+
+    <string name="add_contact_label">Add a new contact</string>
+
+    <string name="name_label">Name</string>
+    <string name="email_label">Email</string>
+    <string name="phone_label">Phone</string>
+    <string name="address_label">Address</string>
+    <string name="ok_label">OK</string>
+    <string name="added_message">Added</string>
+    <string name="comma_label">, </string>
+    <string name="colon_label"> : </string>
+
+
+    <string name="no_contacts">You don\'t have contacts</string>
+    <string name="internal_error">Internal error</string>
+
+    <string name="name_label_help">Your name</string>
+    <string name="email_label_help">Your email</string>
+    <string name="phone_label_help">Your phone</string>
+    <string name="address_label_help">Your address</string>
+
+
+</resources>
