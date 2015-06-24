@@ -1,20 +1,24 @@
 package co.edu.unal.mycontacts;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import co.edu.unal.mycontacts.data.Contact;
+import co.edu.unal.mycontacts.data.DAO;
 
 
-public class ShowContactActivity extends Activity {
+public class ShowContactActivity extends ActionBarActivity {
     public String TAG = "ShowContactActivity";
 
     @Override
@@ -24,24 +28,26 @@ public class ShowContactActivity extends Activity {
 
         String[] values = getContactsNames();
 
-        if (values.length==0){
+
+
+        if (DAO.loadNuHUBs(getApplication()).size()>0){
+
             ListView listView = (ListView)findViewById(R.id.list_founds);
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,values);
             listView.setAdapter(adapter);
 
-            listView.setOnClickListener(new View.OnClickListener() {
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
-                public void onClick(View view) {
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     String name = ((TextView) view).getText().toString();
                     Contact contact = new Contact();
 
-                    try{
-                        contact = ((MyContacts)getApplicationContext()).searchContactByName(name);
-                    }catch (Exception e){
+                    try {
+                        contact = ((MyContacts) getApplicationContext()).searchContactByName(name);
+                    } catch (Exception e) {
                         Log.i(TAG, "Error -> " + e);
                     }
-
-
+                    
                     Toast.makeText(getApplicationContext(),
                             getString(R.string.name_label) + getString(R.string.colon_label) + contact.getName() + getString(R.string.comma_label) +
                                     getString(R.string.email_label) + getString(R.string.colon_label) + contact.getEmail() + getString(R.string.comma_label) +
@@ -50,6 +56,8 @@ public class ShowContactActivity extends Activity {
                             , Toast.LENGTH_LONG);
                 }
             });
+
+
 
         }else{
             Toast.makeText(getApplicationContext(),
@@ -82,9 +90,12 @@ public class ShowContactActivity extends Activity {
     }
 
     public String[] getContactsNames(){
+
+        ArrayList<Contact> myContacts = DAO.loadNuHUBs(getApplication());
         int size = 0;
         try{
-            size = ((MyContacts)getApplicationContext()).myContacts.size();
+            //size = ((MyContacts)getApplicationContext()).myContacts.size();
+            size = myContacts.size();
         }catch (Exception e){
             Log.i(TAG,"Error -> "+e);
             Toast.makeText(getApplicationContext(),
@@ -94,7 +105,8 @@ public class ShowContactActivity extends Activity {
         String[] names = new String[size];
 
         for (int i = 0; i < size; i++){
-            names[i] = ((MyContacts)getApplicationContext()).myContacts.get(i).getName();
+            //names[i] = ((MyContacts)getApplicationContext()).myContacts.get(i).getName();
+            names[i] = myContacts.get(i).getName();
         }
         return names;
     }

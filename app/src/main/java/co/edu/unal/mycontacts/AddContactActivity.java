@@ -1,7 +1,7 @@
 package co.edu.unal.mycontacts;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,9 +11,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import co.edu.unal.mycontacts.data.Contact;
+import co.edu.unal.mycontacts.data.DAO;
 
 
-public class AddContactActivity extends Activity {
+public class AddContactActivity extends ActionBarActivity {
 
     private String TAG = "AddContactActivity";
 
@@ -40,13 +41,16 @@ public class AddContactActivity extends Activity {
                 newContact.setAddress(addressField.getText().toString());
 
                 try{
-                    ((MyContacts) getApplicationContext()).myContacts.add(newContact);
+
+                    DAO.addContact(getApplication(), newContact);
+                    //((MyContacts) getApplicationContext()).myContacts.add(newContact);
                 }catch (Exception e){
                     Log.i(TAG,"Error -> "+e);
                 }
 
 
                 toast = Toast.makeText(getApplication(),getString(R.string.added_message),Toast.LENGTH_LONG);
+                toast.show();
             }
         });
     }
